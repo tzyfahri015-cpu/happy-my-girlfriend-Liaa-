@@ -1,0 +1,664 @@
+/* ================================================= */
+/*              Happy My Girlfriend Liaa             */
+/*                 STYLE.CSS - PART 2A               */
+/* ================================================= */
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Poppins',sans-serif;
+}
+
+html,body{
+    width:100%;
+    height:100%;
+    overflow:hidden;
+}
+
+body{
+
+    display:flex;
+    justify-content:center;
+    align-items:center;
+
+    color:white;
+
+    background:
+    linear-gradient(
+        to bottom,
+        #02030f 0%,
+        #071631 35%,
+        #0c2c55 70%,
+        #183d73 100%
+    );
+
+    position:relative;
+
+}
+
+/* ====================================== */
+/* Loading */
+/* ====================================== */
+
+#loading{
+
+position:fixed;
+
+top:0;
+left:0;
+
+width:100%;
+height:100%;
+
+background:#02030f;
+
+display:flex;
+
+justify-content:center;
+align-items:center;
+
+flex-direction:column;
+
+z-index:99999;
+
+transition:.8s;
+
+}
+
+.loader{
+
+width:70px;
+height:70px;
+
+border-radius:50%;
+
+border:5px solid rgba(255,255,255,.2);
+
+border-top:5px solid white;
+
+animation:spin 1s linear infinite;
+
+}
+
+#loading p{
+
+margin-top:25px;
+
+font-size:18px;
+
+letter-spacing:2px;
+
+color:white;
+
+}
+
+@keyframes spin{
+
+100%{
+
+transform:rotate(360deg);
+
+}
+
+}
+
+/* ====================================== */
+/* Sky */
+/* ====================================== */
+
+.sky{
+
+position:absolute;
+
+top:0;
+left:0;
+
+width:100%;
+height:100%;
+
+overflow:hidden;
+
+pointer-events:none;
+
+}
+
+/* ====================================== */
+/* Moon */
+/* ====================================== */
+
+.moon{
+
+position:absolute;
+
+top:70px;
+right:90px;
+
+width:140px;
+height:140px;
+
+border-radius:50%;
+
+background:#fff8d6;
+
+box-shadow:
+
+0 0 25px #fff9d8,
+0 0 60px #fff9d8,
+0 0 120px rgba(255,255,255,.45);
+
+animation:moonFloat 6s ease-in-out infinite;
+
+}
+
+@keyframes moonFloat{
+
+0%{
+
+transform:translateY(0);
+
+}
+
+50%{
+
+transform:translateY(-10px);
+
+}
+
+100%{
+
+transform:translateY(0);
+
+}
+
+}
+
+/* ====================================== */
+/* Stars */
+/* ====================================== */
+
+.stars{
+
+position:absolute;
+
+width:100%;
+height:100%;
+
+background-image:
+
+radial-gradient(white 1px,transparent 1px),
+radial-gradient(white 2px,transparent 2px),
+radial-gradient(rgba(255,255,255,.8) 1px,transparent 1px);
+
+background-size:
+
+80px 80px,
+150px 150px,
+220px 220px;
+
+animation:twinkle 6s linear infinite;
+
+opacity:.9;
+
+}
+
+@keyframes twinkle{
+
+0%{
+
+opacity:.4;
+
+}
+
+50%{
+
+opacity:1;
+
+}
+
+100%{
+
+opacity:.5;
+
+}
+
+}
+
+/* ====================================== */
+/* Shooting Stars Container */
+/* ====================================== */
+
+.shooting-stars{
+
+position:absolute;
+
+width:100%;
+height:100%;
+
+overflow:hidden;
+
+}
+
+/* ====================================== */
+/* Flowers Container */
+/* ====================================== */
+
+.flowers{
+
+position:absolute;
+
+width:100%;
+height:100%;
+
+overflow:hidden;
+
+}
+
+/* ====================================== */
+/* Hearts Container */
+/* ====================================== */
+
+.hearts{
+
+position:absolute;
+
+width:100%;
+height:100%;
+
+overflow:hidden;
+
+}
+
+/* ====================================== */
+/* Music Button */
+/* ====================================== */
+
+#musicBtn{
+
+position:fixed;
+
+top:25px;
+left:25px;
+
+padding:12px 22px;
+
+border:none;
+
+border-radius:30px;
+
+background:rgba(255,255,255,.12);
+
+color:white;
+
+backdrop-filter:blur(12px);
+
+cursor:pointer;
+
+transition:.35s;
+
+z-index:1000;
+
+font-size:15px;
+
+}
+
+#musicBtn:hover{
+
+transform:scale(1.05);
+
+background:rgba(255,255,255,.2);
+
+}
+
+/* ====================================== */
+/* Main Content */
+/* ====================================== */
+
+.container{
+
+position:relative;
+
+z-index:100;
+
+text-align:center;
+
+padding:20px;
+
+max-width:700px;
+
+}
+
+#typing{
+
+font-size:58px;
+
+font-weight:700;
+
+line-height:1.2;
+
+text-shadow:
+
+0 0 20px rgba(255,255,255,.5);
+
+}
+
+.subtitle{
+
+margin-top:20px;
+
+font-size:20px;
+
+opacity:.9;
+
+line-height:34px;
+
+}
+
+/* ================================================= */
+/*              STYLE.CSS - PART 2B                  */
+/* ================================================= */
+
+/* ====================================== */
+/* Open Letter Button */
+/* ====================================== */
+
+#openLetter{
+
+margin-top:35px;
+
+padding:15px 38px;
+
+font-size:18px;
+
+font-weight:600;
+
+border:none;
+
+border-radius:40px;
+
+cursor:pointer;
+
+color:white;
+
+background:linear-gradient(135deg,#ff7eb3,#ff4d6d);
+
+box-shadow:0 10px 25px rgba(255,77,109,.35);
+
+transition:.35s;
+
+}
+
+#openLetter:hover{
+
+transform:translateY(-4px) scale(1.05);
+
+box-shadow:
+0 15px 35px rgba(255,77,109,.45);
+
+}
+
+/* ====================================== */
+/* Letter Overlay */
+/* ====================================== */
+
+#letterBox{
+
+position:fixed;
+
+top:0;
+left:0;
+
+width:100%;
+height:100%;
+
+display:none;
+
+justify-content:center;
+align-items:center;
+
+background:rgba(0,0,0,.6);
+
+backdrop-filter:blur(8px);
+
+z-index:9998;
+
+padding:20px;
+
+}
+
+/* ====================================== */
+/* Letter
+
+/* ================================================= */
+/*              STYLE.CSS - PART 2C-1                */
+/* ================================================= */
+
+/* ====================================== */
+/* Floating Hearts */
+/* ====================================== */
+
+.hearts span{
+
+position:absolute;
+
+bottom:-50px;
+
+display:block;
+
+font-size:18px;
+
+color:#ff6b9d;
+
+opacity:.8;
+
+animation:heartFloat linear infinite;
+
+filter:drop-shadow(0 0 8px rgba(255,105,180,.6));
+
+}
+
+@keyframes heartFloat{
+
+0%{
+
+transform:
+translateY(0)
+translateX(0)
+scale(.5);
+
+opacity:0;
+
+}
+
+20%{
+
+opacity:1;
+
+}
+
+100%{
+
+transform:
+translateY(-120vh)
+translateX(40px)
+scale(1.3);
+
+opacity:0;
+
+}
+
+}
+
+/* ====================================== */
+/* Sakura Flowers */
+/* ====================================== */
+
+.flowers span{
+
+position:absolute;
+
+top:-30px;
+
+display:block;
+
+font-size:20px;
+
+opacity:.9;
+
+animation:flowerFall linear infinite;
+
+}
+
+@keyframes flowerFall{
+
+0%{
+
+transform:
+translateY(-20px)
+rotate(0deg);
+
+}
+
+100%{
+
+transform:
+translateY(120vh)
+translateX(80px)
+rotate(360deg);
+
+}
+
+}
+
+/* ====================================== */
+/* Shooting Star */
+/* ====================================== */
+
+.shooting-stars span{
+
+position:absolute;
+
+width:3px;
+
+height:3px;
+
+border-radius:50%;
+
+background:white;
+
+box-shadow:
+
+0 0 6px white,
+
+0 0 12px white,
+
+0 0 18px white;
+
+animation:shootingStar linear infinite;
+
+}
+
+.shooting-stars span::after{
+
+content:"";
+
+position:absolute;
+
+width:120px;
+
+height:2px;
+
+background:linear-gradient(
+
+90deg,
+
+white,
+
+transparent
+
+);
+
+top
+
+  /* ================================================= */
+/*              STYLE.CSS - PART 2C-2                */
+/* ================================================= */
+
+/* ====================================== */
+/* Aurora */
+/* ====================================== */
+
+.sky::before{
+
+content:"";
+
+position:absolute;
+
+top:-20%;
+
+left:-20%;
+
+width:140%;
+
+height:140%;
+
+background:
+radial-gradient(circle at 20% 20%,rgba(0,255,180,.08),transparent 40%),
+radial-gradient(circle at 80% 30%,rgba(0,180,255,.08),transparent 45%),
+radial-gradient(circle at 50% 80%,rgba(180,0,255,.06),transparent 40%);
+
+animation:auroraMove 18s
+
+  /* ================================================= */
+/*              STYLE.CSS - PART 2C-3                */
+/* ================================================= */
+
+/* ====================================== */
+/* Floating Animation */
+/* ====================================== */
+
+@keyframes floating{
+
+0%{
+transform:translateY(0px);
+}
+
+50%{
+transform:translateY(-8px);
+}
+
+100%{
+transform:translateY(0px);
+}
+
+}
+
+.photo-frame{
+
+animation:floating 5s ease-in-out infinite;
+
+}
+
+/* ====================================== */
+/* Button Pulse */
+/* ====================================== */
+
+#openLetter{
+
+animation:pulseButton 3s infinite;
+
+}
+
+@keyframes pulseButton{
+
+0%{
+
+box-shadow:
+0 0 0 rgba(255,80,120,.0);
+
+}
+
+50%{
+
+box-shadow:
+0 
