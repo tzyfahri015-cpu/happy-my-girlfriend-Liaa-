@@ -1,188 +1,290 @@
-/* ========================================= */
-/* Happy My Girlfriend Liaa */
-/* SCRIPT.JS - PART 3A */
-/* ========================================= */
+/* ===========================================
+   HAPPY MY GIRLFRIEND LIAA
+   SCRIPT.JS - PART 3A
+=========================================== */
 
+// Ambil elemen
 const loading = document.getElementById("loading");
 const typing = document.getElementById("typing");
 
-const music = document.getElementById("bgm");
+const bgm = document.getElementById("bgm");
 const musicBtn = document.getElementById("musicBtn");
 
 const openLetter = document.getElementById("openLetter");
 const closeLetter = document.getElementById("closeLetter");
 const letterBox = document.getElementById("letterBox");
 
-/* ========================================= */
-/* Loading */
-/* ========================================= */
+// Status musik
+let playing = false;
 
-window.addEventListener("load",()=>{
+/* ===========================================
+   LOADING SCREEN
+=========================================== */
 
-setTimeout(()=>{
+window.addEventListener("load", function () {
 
-loading.style.opacity="0";
+    setTimeout(function () {
 
-setTimeout(()=>{
+        if (loading) {
+            loading.style.opacity = "0";
 
-loading.style.display="none";
+            setTimeout(function () {
+                loading.style.display = "none";
+            }, 600);
+        }
 
-},800);
-
-},1800);
+    }, 1800);
 
 });
 
-/* ========================================= */
-/* Typing */
-/* ========================================= */
+/* ===========================================
+   TYPING EFFECT
+=========================================== */
 
-const text="Happy My Girlfriend Liaa 💐🤍";
+const message = "Happy My Girlfriend Liaa 💐🤍";
 
-let index=0;
+let i = 0;
 
-function typeEffect(){
+function typeWriter() {
 
-if(index<text.length){
+    if (!typing) return;
 
-typing.inner
+    if (i < message.length) {
 
-  /* ========================================= */
-/* SCRIPT.JS - PART 3B */
-/* ========================================= */
+        typing.innerHTML += message.charAt(i);
 
-const flowers=document.querySelector(".flowers");
-const hearts=document.querySelector(".hearts");
-const shooting=document.querySelector(".shooting-stars");
+        i++;
 
-/* ========================================= */
-/* Sakura Flowers */
-/* ========================================= */
+        setTimeout(typeWriter, 90);
 
-function createFlower(){
-
-const flower=document.createElement("span");
-
-flower.innerHTML="🌸";
-
-flower.style.left=Math.random()*100+"%";
-
-flower.style.fontSize=(16+Math.random()*18)+"px";
-
-flower.style.animationDuration=(8+Math.random()*8)+"s";
-
-flowers.appendChild(flower);
-
-setTimeout(()=>{
-
-flower.remove();
-
-},16000);
+    }
 
 }
 
-setInterval(createFlower,500);
+setTimeout(typeWriter, 2000);
 
-/* ========================================= */
-/* Hearts */
-/* ========================================= */
+/* ===========================================
+   MUSIC BUTTON
+=========================================== */
 
-function createHeart(){
+if (musicBtn && bgm) {
 
-const heart=document.createElement("span");
+    musicBtn.addEventListener("click", function () {
 
-heart.innerHTML="❤";
+        if (!playing) {
 
-heart.style.left=Math.random()*100+"%";
+            bgm.play();
 
-heart.style.fontSize
+            playing = true;
 
-  /* ========================================= */
-/* SCRIPT.JS - PART 3C */
-/* ========================================= */
+            musicBtn.innerHTML = "⏸ Pause Music";
 
-/* Fade saat membuka surat */
+        } else {
 
-openLetter.addEventListener("click",()=>{
+            bgm.pause();
 
-letterBox.style.opacity="0";
+            playing = false;
 
-setTimeout(()=>{
+            musicBtn.innerHTML = "🎵 Play Music";
 
-letterBox.style.opacity="1";
+        }
 
-},50);
-
-});
-
-/* Musik otomatis saat membuka surat */
-
-openLetter.addEventListener("click",()=>{
-
-if(!playing){
-
-music.play().catch(()=>{});
-
-playing=true;
-
-musicBtn.innerHTML="⏸ Pause Music";
+    });
 
 }
 
+/* ===========================================
+   OPEN LETTER
+=========================================== */
+
+if (openLetter && letterBox) {
+
+    openLetter.addEventListener("click", function () {
+
+        letterBox.style.display = "flex";
+
+    });
+
+}
+
+/* ===========================================
+   CLOSE LETTER
+=========================================== */
+
+if (closeLetter && letterBox) {
+
+    closeLetter.addEventListener("click", function () {
+
+        letterBox.style.display = "none";
+
+    });
+
+}
+
+/* ===========================================
+   CLOSE IF CLICK OUTSIDE
+=========================================== */
+
+if (letterBox) {
+
+    letterBox.addEventListener("click", function (e) {
+
+        if (e.target === letterBox) {
+
+            letterBox.style.display = "none";
+
+        }
+
+    });
+
+    }
+/* ===========================================
+   SCRIPT.JS - PART 3B
+=========================================== */
+
+// Container animasi
+const flowers = document.querySelector(".flowers");
+const hearts = document.querySelector(".hearts");
+const shootingStars = document.querySelector(".shooting-stars");
+
+/* ===========================================
+   BUNGA SAKURA
+=========================================== */
+
+function createFlower() {
+
+    if (!flowers) return;
+
+    const flower = document.createElement("span");
+
+    flower.innerHTML = "🌸";
+
+    flower.style.left = Math.random() * 100 + "%";
+
+    flower.style.fontSize = (16 + Math.random() * 18) + "px";
+
+    flower.style.animationDuration = (8 + Math.random() * 6) + "s";
+
+    flowers.appendChild(flower);
+
+    setTimeout(function () {
+        flower.remove();
+    }, 14000);
+
+}
+
+setInterval(createFlower, 500);
+
+/* ===========================================
+   HATI MELAYANG
+=========================================== */
+
+function createHeart() {
+
+    if (!hearts) return;
+
+    const heart = document.createElement("span");
+
+    heart.innerHTML = "❤️";
+
+    heart.style.left = Math.random() *
+      /* ===========================================
+   SCRIPT.JS - PART 3C
+=========================================== */
+
+/* ===========================================
+   MUSIK OTOMATIS SAAT SURAT DIBUKA
+=========================================== */
+
+if (openLetter && bgm) {
+
+    openLetter.addEventListener("click", function () {
+
+        if (!playing) {
+
+            bgm.play().catch(() => {});
+
+            playing = true;
+
+            if (musicBtn) {
+                musicBtn.innerHTML = "⏸ Pause Music";
+            }
+
+        }
+
+    });
+
+}
+
+/* ===========================================
+   EFEK KLIK TOMBOL
+=========================================== */
+
+document.querySelectorAll("button").forEach(function (btn) {
+
+    btn.addEventListener("mousedown", function () {
+        btn.style.transform = "scale(.95)";
+    });
+
+    btn.addEventListener("mouseup", function () {
+        btn.style.transform = "scale(1)";
+    });
+
+    btn.addEventListener("mouseleave", function () {
+        btn.style.transform = "scale(1)";
+    });
+
 });
 
-/* Efek klik tombol */
+/* ===========================================
+   PARALLAX BULAN
+=========================================== */
 
-document.querySelectorAll("button").forEach(btn=>{
+const moon = document.querySelector(".moon");
 
-btn.addEventListener("mousedown",()=>{
+if (moon) {
 
-btn.style.transform="scale(.95)";
+    document.addEventListener("mousemove", function (e) {
 
-});
+        const x = (window.innerWidth / 2 - e.clientX) / 80;
+        const y = (window.innerHeight / 2 - e.clientY) / 80;
 
-btn.addEventListener("mouseup",()=>{
+        moon.style.transform = `translate(${x}px, ${y}px)`;
 
-btn.style.transform="scale(1)";
+    });
 
-});
+}
 
-btn.addEventListener("mouseleave",()=>{
+/* ===========================================
+   BINTANG KECIL TAMBAHAN
+=========================================== */
 
-btn.style.transform="scale(1)";
+const stars = document.querySelector(".stars");
 
-});
+if (stars {
+        for (let i = 0; i < 30; i++) {
 
-});
+        const dot = document.createElement("div");
 
-/* Parallax Bulan */
+        dot.style.position = "absolute";
+        dot.style.width = "2px";
+        dot.style.height = "2px";
+        dot.style.borderRadius = "50%";
+        dot.style.background = "white";
 
-document.addEventListener("mousemove",(e)=>{
+        dot.style.left = Math.random() * 100 + "%";
+        dot.style.top = Math.random() * 100 + "%";
+        dot.style.opacity = Math.random();
 
-const moon=document.querySelector(".moon");
+        stars.appendChild(dot);
 
-const x=(window.innerWidth/2-e.clientX)/80;
+    }
 
-const y=(window.innerHeight/2-e.clientY)/80;
+}
 
-moon.style.transform=`translate(${x}px,${y}px)`;
+/* ===========================================
+   PESAN CONSOLE
+=========================================== */
 
-});
-
-/* Bintang Tambahan */
-
-const stars=document.querySelector(".stars");
-
-for(let i=0;i<30;i++){
-
-const dot=document.createElement("div");
-
-dot.style.position="absolute";
-
-dot.style.width="2px";
-
-dot.style.height="2px";
-
-dot.style.borderRadius="50%";
-
-dot.style
+console.log("💐 Happy My Girlfriend Liaa 🤍");
+console.log("Made with ❤️ by You");
